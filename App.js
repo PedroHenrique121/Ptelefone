@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { View, Text , Button, Image} from 'react-native';
+import { View, Text , Button, Image, TextInput} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useRoute } from '@react-navigation/native';
 
-function Login({navigation}) {
+function LoginT({navigation}) {
 return (
 
-<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',  backgroundColor: '#fff' }}>
+<View style={styles.container}> 
 <Image
           style={{ width: 100, height: 100, marginBottom: 20 }}
         source={{
@@ -15,27 +15,27 @@ return (
         }}
   />
 <Text>Login</Text>
-<input type="text" placeholder="Username" style={ {width: '200',
+<TextInput style={styles.input}
+          placeholder="Username"
+          
+    />
 
-    backgroundColor: '#ffffff',
-    height: 30,
-    }} />
 <Text>Senha</Text>
-<input type="password" placeholder="senha" style={ {width: '250',
+<TextInput 
+          placeholder="senha"
+          secureTextEntry={true}
+          style={styles.input} />
 
-    backgroundColor: '#ffffff',
-    height: 30
-    }} />
-<View style={{marginTop: 20, width: 180, }}>
+<View style={{marginTop: 20, width: 200,  }}>
 
-    <View style={{borderBlockColor: 'black', borderWidth: 1, borderRadius: 5}}>
+    <View style={{borderBlockColor: 'black', borderWidth: 1, borderRadius: 5, marginBottom: 10}}>
      <Button
           title="Entrar"
           color={'red'}
 
           onPress={() => navigation.navigate('ListaContatos')}
         /></View>
-        <br></br>
+       
         <View style={{borderBlockColor: 'black', borderWidth: 1, borderRadius: 5}}>
 
         <Button title="Cadastrar-se" onPress={() => navigation.navigate('Cadastro')}/> 
@@ -46,59 +46,108 @@ return (
 );        
 }
 
-function ListaContatos() {
+function ListaContatos({ navigation }) {
 return (
 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 <Text>Lista de Contatos</Text>
 </View>
 );
 }
-function Cadastro() {
+function Cadastro({ navigation }) {
 return (
-<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+<View style={styles.container}>
 <Text>Cadastro</Text>
 <Text>Nome</Text>
-<input type="text" placeholder="Username" />
+<TextInput
+          placeholder="Username"
+          style={styles.input} />
 <Text>CPF</Text>
-<input type="password" placeholder="CPF" />
+<TextInput
+          placeholder="CPF"
+          style={styles.input} />
 <Text>Email</Text>
-<input type="text" placeholder="E-mail" />
+<TextInput
+          placeholder="E-mail"
+          style={ styles.input} />
+    
 <Text>Senha</Text>
-<input type="password" placeholder="senha" />
+<TextInput
+      placeholder="senha"
+      secureTextEntry={true}
+      style={ styles.input} />
+    
 <Button title="Cadastrar-se" onPress={() => navigation.navigate('Login')}>
   </Button> 
 </View>
 );
 }
-function CadastroContato() {
+
+
+function CadastroContato({ navigation }) {
 return (
 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-<Text>Cadastro</Text>
+<Text>Cadastro Contato</Text>
+
 <Text>Nome</Text>
-<input type="text" placeholder="Username" />
+<TextInput
+  placeholder="Username"
+  style={{ width: 200, backgroundColor: '#fff', height: 30 }}
+/>
+
 <Text>Email</Text>
-<input type="text" placeholder="E-mail" />
+<TextInput
+  placeholder="E-mail"
+  style={{ width: 200, backgroundColor: '#fff', height: 30 }}
+/>
+
 <Text>Senha</Text>
-<input type="password" placeholder="senha" />
-<Button title="Salvar" onPress={() => navigation.navigate('ListaContatos')}>
-  </Button> 
+<TextInput
+  placeholder="Senha"
+  secureTextEntry
+  style={{ width: 200, backgroundColor: '#fff', height: 30 }}
+/>
+
+<Button 
+  title="Salvar" 
+  onPress={() => navigation.navigate('ListaContatos')} 
+/>
 </View>
 );
 }
-function AlteraContatos() {
+
+
+function AlteraContatos({ navigation }) {
 return (
 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-<Text>Cadastro</Text>
+<Text>Alterar Contato</Text>
+
 <Text>Nome</Text>
-<input type="text" placeholder="Username" />
+<TextInput
+  placeholder="Username"
+  style={{ width: 200, backgroundColor: '#fff', height: 30 }}
+/>
+
 <Text>Email</Text>
-<input type="text" placeholder="E-mail" />
+<TextInput
+  placeholder="E-mail"
+  style={{ width: 200, backgroundColor: '#fff', height: 30 }}
+/>
+
 <Text>Telefone</Text>
-<input type="text" placeholder="Telefone" />
-<Button title="Alterar" onPress={() => navigation.navigate('ListaContatos')}>
-  </Button> 
-  <Button title="Excluir" onPress={() => navigation.navigate('ListaContatos')}>
-  </Button>
+<TextInput
+  placeholder="Telefone"
+  style={{ width: 200, backgroundColor: '#fff', height: 30 }}
+/>
+
+<Button 
+  title="Alterar" 
+  onPress={() => navigation.navigate('ListaContatos')} 
+/>
+
+<Button 
+  title="Excluir" 
+  onPress={() => navigation.navigate('ListaContatos')} 
+/>
 </View>
 );
 }
@@ -109,12 +158,32 @@ function App() {
 return (
 <NavigationContainer>
 <Stack.Navigator>
-<Stack.Screen name="Login" component={Login} options={{ headerShown: false}}/>
+<Stack.Screen name="Login" component={LoginT} options={{ headerShown: false}}/>
 <Stack.Screen name="ListaContatos" component={ListaContatos} options={{headerTitleAlign: 'center'}}/>
 <Stack.Screen name="Cadastro" component={Cadastro} options={{headerTitleAlign: 'center'}}/>
+<Stack.Screen name="CadastroContato" component={CadastroContato} options={{headerTitleAlign: 'center'}}/>
+<Stack.Screen name="AlteraContatos" component={AlteraContatos} options={{headerTitleAlign: 'center'}}/>
 </Stack.Navigator>
 </NavigationContainer>
 );
+}
+
+const styles={
+  input: {
+  width: 200,
+  backgroundColor: '#D3D3D3',
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    paddingLeft: 12
+  },
+   container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 }
 
 export default App;
