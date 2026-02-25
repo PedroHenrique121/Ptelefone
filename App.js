@@ -59,7 +59,7 @@ return (
 <Text>Cadastro</Text>
 <Text>Nome</Text>
 <input type="text" placeholder="Username" />
-<Text>CPf</Text>
+<Text>CPF</Text>
 <input type="password" placeholder="CPF" />
 <Text>Email</Text>
 <input type="text" placeholder="E-mail" />
