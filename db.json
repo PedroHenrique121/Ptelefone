@@ -1,0 +1,31 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Pedro Henrique",
+      "cpf": "12345678900",
+      "email": "pedro@email.com",
+      "senha": "123456"
+    }
+  ],
+  "contatos": [
+    {
+      "id": 1,
+      "nome": "Marcos Andrade",
+      "telefone": "81988553424",
+      "email": "marcosAndrade67@gmail.com"
+    },
+    {
+      "id": 2,
+      "nome": "Patrícia Tavares",
+      "telefone": "81998765332",
+      "email": "patriciaTavares67@gmail.com"
+    },
+    {
+      "id": 3,
+      "nome": "Rodrigo Antunes",
+      "telefone": "81987765525",
+      "email": "rodrigoAntunes67@gmail.com"
+    }
+  ]
+}
